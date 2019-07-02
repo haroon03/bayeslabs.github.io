@@ -2,7 +2,7 @@
 <h2>Introduction</h2>
 <b>Objective-Reinforced Generative Adversarial Network (ORGAN)</b> is a modified version of a basic Generative Adversarial Network (GAN). 
 Before we dig deep into theory and implementation of ORGAN let me brief you about the basics of GAN. 
-A simple GAN is composed of two neural networks,Generator and the Discriminator.
+A simple GAN is composed of two neural networks,Generator, and the Discriminator.
 
 <li><b> Generator:</b></li> The main aim of the Generator<b>(G)</b> is to produce/generate fake samples which resemble the true data/distribution so closely, that the discriminator cannot differentiate between the true data and the fake ones, in other words, it tries to fool the discriminator.
 
@@ -10,14 +10,14 @@ A simple GAN is composed of two neural networks,Generator and the Discriminator.
 
 Both of these networks work against each other trying to be better at their job by proving the other wrong. Their main objective is to 
 generate data points that are similar to some data points in the training data;
-Given an initial  training distribution p(data), the generator G samples x from a distribution p(synth) generated with random noise z, while a discriminator D looks at samples, either from p(syntetic) or from p(data), and tries to classify their identity (y) as either real x∈p(data) or fake x∈p(synth).
+Given an initial  training distribution p<sub>data</sub>, the generator G samples x from a distribution p<sub>synth</sub> generated with random noise z, while a discriminator D looks at samples, either from p(synthetic) or from p<sub>data</sub>, and tries to classify their identity (y) as either real x∈p<sub>data</sub> or fake x∈p<sub>synth</sub>.
 
-The model follows a min max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples vesry close to the original distribution, while maximizing the discriminator function logi(D(x)) so that it can classify beteen fake and real data pints more accurately. 
+The model follows a min-max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples very close to the original distribution, while maximizing the discriminator function log(D(x)) so that it can classify between fake and real data pints more accurately. 
 <ul>
   <li>For a single data point we have: </li>
   min G max D [logD(x)]+z∼p(synthetic)(z)[log(1−D(G(z)))].
   <li>For the complete distributions we have: </li>
-  min G max D E[logD(x)] +E[log(1−D(G(z)))] where E is Expectation.
+  min G max D E<sub>pdata</sub>[logD(x)] +E<sub>psynth</sub>[log(1−D(G(z)))] where E is Expectation.
 </ul>
 <h3>Training a GAN</h3>
 Training a GAN is still a topic of research. Various problems have limited the power of GAN and its stability. Stability of GAN while training is also a major roadblock. If you start to train a GAN, and the discriminator part is much powerful than its generator counterpart, the generator would fail to train effectively. This will, in turn, affect the training of your GAN. On the other hand, if the discriminator is too lenient; it would let literally any image be generated. And this will mean that your GAN is useless. 
@@ -27,14 +27,17 @@ The training has broadly two phases.
   <li><b>Discriminator Training</b></li>
   We train the Discriminator on the labeled Training set for a certain epoch range. It must be trained well enough that it can discriminate the training data correctly as real(1). This is achieved by varying the number of epochs.
   While training Discriminator, the Generator is in freeze mode(freezing means setting training as false. The network does only forward pass and no backpropagation is applied).
-  Afterwards we generate fake data and train the discriminator on it as well, untill it predicts efficiently.
-  Calculate the loss and optmize the network parameters and update the gradients.
+  Afterward, we generate fake data and train the discriminator on it as well, until it predicts efficiently.
+  Calculate the loss and optimize the network parameters and update the gradients.
   <li><b>Generator Training</b></li>
-  Now to train the Discriminator we use the predictions of discriminator as a objective to train the Generator.
+  Now to train the Discriminator we use the predictions of discriminator as an objective to train the Generator.
   SImilar to the Discriminator training step we have discriminator in freeze mode while training the generator.
-  Calculate the loss and optmize the network parameters and update the gradients.
+  Calculate the loss and optimize the network parameters and update the gradients.
 </ol>
 
-This was a brief intoduction to GANS's. Now, moving on to ORGAN let see what makes ORGAN different from a GAN.
+This was a brief introduction to GANS's. Now, moving on to ORGAN let see what makes ORGAN different from a GAN.
 In ORGAN the main difference is the application of <b>Reinforcement Learning(RL) </b> to train the generator in a manner that it generates output with desired properties.
-In ORGAN we apply bypass the generator differentiation problem by treating the specific discrete sequences as stochiastic policy in an RL setup. policy gradient method to update the generator gradients.
+In ORGAN we bypass the generator differentiation problem by treating the specific discrete sequences as stochastic policy in an RL setup.
+<h3>Reinforcement Learning</h3>
+We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next charactr x<sub>t+1</sub>.
+
