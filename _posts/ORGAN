@@ -1,4 +1,4 @@
-Objective-Reinforced Generative Adversarial Network (ORGAN) is a modified version of a basic Generative Adversarial Network (GAN). 
+<b>Objective-Reinforced Generative Adversarial Network (ORGAN)</b> is a modified version of a basic Generative Adversarial Network (GAN). 
 Before we dig deep into theory and implementation of ORGAN let me brief you about the basics of GAN.
 A simple GAN is composed of two neural networks, The Generator and The Discriminator. 
 (i). Generator: The main aim of the Generator is to produce/generate fake samples which resemble the true data/distribution so closely,
