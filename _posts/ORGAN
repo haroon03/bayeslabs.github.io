@@ -15,6 +15,7 @@ Components that make an ORGAN:
 Generator(G): It is a Recurrent Neural Network(RNN) with Long-short Term Memory (LSTM) cells. It is responsible for generating molecules 
 that closely follows the distribution of training data. A generator can be assumed as a money forger. The Generator is initially trained 
 on the training set using Maximum Likelihood Estimation(MLE) to generate molecules.
+
 ```python
 class Generator(nn.Module):
     def __init__(self, embedding_layer, hidden_size, num_layers, dropout):
