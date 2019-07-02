@@ -18,11 +18,14 @@ For a single data point we have: min G max D [logD(x)]+z∼p(synthetic)(z)[log(1
 For the complete distributions we have: min G max D E[logD(x)] +E[log(1−D(G(z)))] where E is Expectation.
 
 <h3>Training a GAN</h3>
+Training a GAN is still a topic of research. Various problems have limited the power of GAN and its stability. Stability of GAN while training is also a major roadblock. If you start to train a GAN, and the discriminator part is much powerful than its generator counterpart, the generator would fail to train effectively. This will, in turn, affect the training of your GAN. On the other hand, if the discriminator is too lenient; it would let literally any image be generated. And this will mean that your GAN is useless. 
 
 The training has broadly two phases.
 <ol>
-  <li>Train the discriminator</li>
-  <li>train the generator</li>
+  <li><b>Discriminator Training</b></li>
+  We train the Discriminator on the labeled Training set for a certain epoch range. It must be trained well enough that it can discriminate the training data correctly as real(1). This is achieved by varying the number of epochs.
+  While training Discriminator the Generator is in freeze mode(Not in Training Mode).
+  <li>Pr</li>
 
 </ol>
 
