@@ -13,7 +13,7 @@ samples.
 Both of these networks work against each other trying to be better at their job by proving the other wrong. Their main objective is to 
 produce data points that are similar to some data points in the training data.An ORGAN takes into account the domain-specific desired 
 objectives defined. This is achieved by using a reward function for each generated molecule. 
-
+<img href="Desktop/SMILES.png">
 <h3>Components that make an ORGAN: MODEL</h3>
 
 <b>Generator(G):</b> It is a Recurrent Neural Network(RNN) with Long-short Term Memory (LSTM) cells. It is responsible for generating molecules that closely follows the distribution of training data. A generator can be assumed as a money forger. The Generator is initially trained on the training set using Maximum Likelihood Estimation(MLE) to generate molecules.
