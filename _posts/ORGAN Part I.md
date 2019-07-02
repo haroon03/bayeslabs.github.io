@@ -26,12 +26,12 @@ The training has broadly two phases.
 <ol>
   <li><b>Discriminator Training</b></li>
   We train the Discriminator on the labeled Training set for a certain epoch range. It must be trained well enough that it can discriminate the training data correctly as real(1). This is achieved by varying the number of epochs.
-  While training Discriminator, the Generator is in freeze mode(freezing means setting training as false. The network does only forward pass and no backpropagation is applied).
+  While training Discriminator, the Generator is in freeze mode(freezing means setting training as false. The network does only forward pass and no back-propagation is applied).
   Afterward, we generate fake data and train the discriminator on it as well, until it predicts efficiently.
   Calculate the loss and optimize the network parameters and update the gradients.
   <li><b>Generator Training</b></li>
   Now to train the Discriminator we use the predictions of discriminator as an objective to train the Generator.
-  SImilar to the Discriminator training step we have discriminator in freeze mode while training the generator.
+  Similar to the Discriminator training step we have discriminator in freeze mode while training the generator.
   Calculate the loss and optimize the network parameters and update the gradients.
 </ol>
 
@@ -39,5 +39,8 @@ This was a brief introduction to GANS's. Now, moving on to ORGAN let see what ma
 In ORGAN the main difference is the application of <b>Reinforcement Learning(RL) </b> to train the generator in a manner that it generates output with desired properties.
 In ORGAN we bypass the generator differentiation problem by treating the specific discrete sequences as stochastic policy in an RL setup.
 <h3>Reinforcement Learning</h3>
-We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i> available in <i><b>s</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next character x<sub>t+1</sub>.
+We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i> available in <i><b>s</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next character x<sub>t+1</sub>. State s<sub>t</sub> is an already generated partial sequence of characters X<sub>1:t</sub>. <i><b>Q(s,a)</b></i> is the action-value function that represents the expected reward at state <i><b>s</b></i> of taking action <i><b>a</b></i> and following our current policy to complete the rest of the sequence. When we are in state <i><b>s</b></i> we estimate <i><b>Q</b></i> value for every possible action, then we choose the action with highest <i><b>Q</b></i> value. Now, if we have an incomplete sequence X<sub>1:t</sub>, in state <i><b>s</b></i> then , the generator G<sub>θ</sub> (read G parametrized by θ) must produce an action <i><b>a</b></i> with the next token x<sub>t+1</sub>.
+The agents stochastic policy is given by G(y<sub>t</sub>|Y<sub>1:t-1</sub>) and our aim is to maximize the expected long-term reward.
+
+
 
