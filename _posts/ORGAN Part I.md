@@ -28,11 +28,13 @@ The training has broadly two phases.
   We train the Discriminator on the labeled Training set for a certain epoch range. It must be trained well enough that it can discriminate the training data correctly as real(1). This is achieved by varying the number of epochs.
   While training Discriminator, the Generator is in freeze mode(freezing means setting training as false. The network does only forward pass and no backpropagation is applied).
   Afterwards we generate fake data and train the discriminator on it as well, untill it predicts efficiently.
+  Calculate the loss and optmize the network parameters and update the gradients.
   <li><b>Generator Training</b></li>
-  Now to train the Discriminator we use the predictions of discriminator as a objective to train thr=e Generator.
+  Now to train the Discriminator we use the predictions of discriminator as a objective to train the Generator.
+  SImilar to the Discriminator training step we have discriminator in freeze mode while training the generator.
+  Calculate the loss and optmize the network parameters and update the gradients.
 </ol>
 
-
-
-Loss is calculated using Cross Entropy Loss method, gradients are updated via backpropagation. 
-
+This was a brief intoduction to GANS's. Now, moving on to ORGAN let see what makes ORGAN different from a GAN.
+In ORGAN the main difference is the application of <b>Reinforcement Learning(RL) </b> to train the generator in a manner that it generates output with desired properties.
+In ORGAN we apply bypass the generator differentiation problem by treating the specific discrete sequences as stochiastic policy in an RL setup. policy gradient method to update the generator gradients.
