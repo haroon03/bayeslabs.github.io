@@ -39,5 +39,5 @@ This was a brief introduction to GANS's. Now, moving on to ORGAN let see what ma
 In ORGAN the main difference is the application of <b>Reinforcement Learning(RL) </b> to train the generator in a manner that it generates output with desired properties.
 In ORGAN we bypass the generator differentiation problem by treating the specific discrete sequences as stochastic policy in an RL setup.
 <h3>Reinforcement Learning</h3>
-We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next charactr x<sub>t+1</sub>.
+We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i> available in <i><b>s</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next character x<sub>t+1</sub>.
 
