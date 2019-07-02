@@ -14,9 +14,9 @@ Given an initial  training distribution p(data), the generator G samples x from 
 
 The model follows a min max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples vesry close to the original distribution, while maximizing the discriminator function logi(D(x)) so that it can classify beteen
 fake and real data pints more accurately. 
-For a single data point we have: 
+<li>For a single data point we have: </li>
 min G max D [logD(x)]+z∼p(synthetic)(z)[log(1−D(G(z)))].
-For the complete distributions we have: 
+<li>For the complete distributions we have: </li>
 min G max D E[logD(x)] +E[log(1−D(G(z)))] where E is Expectation.
 
 <h3>Training a GAN</h3>
