@@ -41,9 +41,7 @@ In ORGAN we bypass the generator differentiation problem by treating the specifi
 <h3>Reinforcement Learning</h3>
 We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i> available in <i><b>s</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next character x<sub>t+1</sub>. State s<sub>t</sub> is an already generated partial sequence of characters X<sub>1:t</sub>. <i><b>Q(s,a)</b></i> is the action-value function that represents the expected reward at state <i><b>s</b></i> of taking action <i><b>a</b></i> and following our current policy to complete the rest of the sequence. When we are in state <i><b>s</b></i> we estimate <i><b>Q</b></i> value for every possible action, then we choose the action with highest <i><b>Q</b></i> value. Now, if we have an incomplete sequence X<sub>1:t</sub>, in state <i><b>s</b></i> then , the generator G<sub>θ</sub> (read G parametrized by θ) must produce an action <i><b>a</b></i> with the next token x<sub>t+1</sub>.
 The agent's stochastic policy is given by G(y<sub>t</sub>|Y<sub>1:t-1</sub>) and our aim is to maximize the expected long-term reward <i><b>J<sub>θ</sub></b></i>.
-
-
-              J(θ) =E[R<sub>T</sub>|s<sub>θ</sub>,θ]=∑<sub>x∈XGθ</sub>(x<sub>1</sub>|s<sub>θ</sub>)·Q(s<sub>θ</sub>,x<sub>1</sub>)
+J(θ) =E[R<sub>T</sub>|s<sub>θ</sub>,θ]=∑<sub>x∈XGθ</sub>(x<sub>1</sub>|s<sub>θ</sub>)·Q(s<sub>θ</sub>,x<sub>1</sub>)
 
 
 
