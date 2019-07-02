@@ -16,4 +16,13 @@ The model follows a min max game where we minimize the Generator function log(1�
 fake and real data pints more accurately.
 For a single data point we have: min G max D [logD(x)]+z∼p(synthetic)(z)[log(1−D(G(z)))].
 For the complete distributions we have: min G max D E[logD(x)] +E[log(1−D(G(z)))] where E is Expectation.
+
+<h3>Training a GAN</h3>
+
+
+
+
+
+
 Loss is calculated using Cross Entropy Loss method, gradients are updated via backpropagation. 
+
