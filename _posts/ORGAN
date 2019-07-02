@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "Hyperparameter Optimization"
+date: 2019-06-27
+comments: True
+mathjax: True
+---
+<h2>Introduction</h2>
 <b>Objective-Reinforced Generative Adversarial Network (ORGAN)</b> is a modified version of a basic Generative Adversarial Network (GAN). 
 Before we dig deep into theory and implementation of ORGAN let me brief you about the basics of GAN.
 A simple GAN is composed of two neural networks, The Generator and The Discriminator. 
