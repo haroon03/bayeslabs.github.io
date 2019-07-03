@@ -1,7 +1,7 @@
 In this post I will give an explanation of the code. 
 
 <h3>ORGAN: MODEL</h3>
-<b>Dataset:</b>
+<5h4><b>Dataset:</b></h4>
 
 ChEMBL SMILES data-set has been used for the training purpose of the GAN. 
 <b>Simplified Molecular-Input Line-Entry System (SMILES)</b>. SMILES is a line notation for representing molecules and reactions.
