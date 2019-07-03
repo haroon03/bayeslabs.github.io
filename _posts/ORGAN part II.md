@@ -7,8 +7,8 @@ ChEMBL SMILES data-set has been used for the training purpose of the GAN.
 
 {% include image.html url="/assets/img/SMILES.png" description="SMILES" %}
 
-We load the Data-set and convert it into a string, Create a vocabulary of all the characters present in the data-set. The characters "<bos>","<eos>", "<unk>" and "<pad>" <b>(markers)</b> were added to the vocabulary.
-    "<bos>": marks the beginning of sequence
+We load the Data-set and convert it into a string, Create a vocabulary of all the characters present in the data-set. The characters "/<bos>","<eos>", "<unk>" and "<pad>" <b>(markers)</b> were added to the vocabulary.
+    "\<bos>": marks the beginning of sequence
     "<eos>": marks end of sequences
     "<unk>": specifies an unknown character
     "<pad>": specifies padding
