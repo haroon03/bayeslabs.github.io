@@ -36,6 +36,7 @@ The training has two phases.
   Similar to the Discriminator training step we have discriminator in freeze mode while training the generator.
   Calculate the loss and optimize the network parameters and update the gradients.
 </ol>
+
 ![pipeline](Train.png)
 
 This was a brief introduction to GANS's. Now, moving on to ORGAN, let's see what makes an ORGAN different from a GAN.
