@@ -70,5 +70,6 @@ We start with a random arbitrary policy and go through some actions and if the r
 The policy function calculates the LogSoftmax of the output sequence given rewards, the targets, and the length of sequence. Its output is negative since we want to minimize loss but maximize the policy gradients.
 The Policy gradient loss function looks like: L = -Q(s, a)log(G(y<sub>t</sub>|Y<sub>1:t-1</sub>)).
 Where Q(s, a) expected reward for an action <i><b>a</b></i> in state <i><b>s</b></i> and  G(y<sub>t</sub>|Y<sub>1:t-1</sub>) is the policy.
-To get a detailed explaination of policy gradient refer to this [blog](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) 
+
+To get a more detailed explaination of policy gradient refer to this [blog](https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c) 
 In [Part 2](LINK) we will implement the above discussed theories to generate a desired molecule
