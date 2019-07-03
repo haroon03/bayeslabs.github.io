@@ -71,4 +71,4 @@ The policy function calculates the LogSoftmax of the output sequence given rewar
 The Policy gradient loss function looks like: L = -Q(s, a)log(G(y<sub>t</sub>|Y<sub>1:t-1</sub>)).
 Where Q(s, a) expected reward for an action <i><b>a</b></i> in state <i><b>s</b></i> and  G(y<sub>t</sub>|Y<sub>1:t-1</sub>) is the policy.
 
-In [Part 2](ORGAN part II) we will implement the above discussed theories to generate a desired molecule
+In [Part 2](ORGAN part II.md) we will implement the above discussed theories to generate a desired molecule
