@@ -181,11 +181,7 @@ Now, we have the loss for the generated molecule we optimize the generator, back
     def _policy_gradient_iter(self, model, train_loader,
                               criterion, optimizer, iter_):
         smooth = self.config.pg_smooth_const if iter_ > 0 else 1
-
-        # Generator
-        gen_postfix = {'generator_loss': 0,
-                       'smoothed_reward': 0}
-
+        gen_postfix = {'generator_loss': 0,'smoothed_reward': 0}
         gen_tqdm = tqdm(range(self.config.generator_updates),
                         desc='PG generator training (iter #{})'.format(iter_))
         for _ in gen_tqdm:
@@ -215,61 +211,39 @@ Now, we have the loss for the generated molecule we optimize the generator, back
 ```
 We have successfully updated and trained the generator, now its time to train the discriminator.
 We generate samples from the generator in batches. We iterate over all the batches and through each molecule to predict the probability of it being fake. Again determine the loss and update the gradients. This is carried out for few epochs (10 in this case).
+ ```python
  discrim_postfix = {'discrim-r_loss': 0}
         discrim_tqdm = tqdm(
             range(self.config.discriminator_updates),
-            desc='PG discrim-r training (iter #{})'.format(iter_)
-        )
+            desc='PG discrim-r training (iter #{})'.format(iter_) )
         for _ in discrim_tqdm:
             model.generator.eval()
-            n_batches = (
-                                len(train_loader) + self.config.n_batch - 1
-                        ) // self.config.n_batch
-            sampled_batches = [
-                model.sample_tensor(self.config.n_batch,
-                                    self.config.max_length)[0]
-                for _ in range(n_batches)
-            ]
-
+            n_batches = (len(train_loader) + self.config.n_batch - 1 ) // self.config.n_batch
+            sampled_batches = [model.sample_tensor(self.config.n_batch, self.config.max_length)[0] for _ in range(n_batches)]   
             for _ in range(self.config.discriminator_epochs):
                 random.shuffle(sampled_batches)
 
-                for inputs_from_model, inputs_from_data in zip(
-                        sampled_batches, train_loader
-                ):
+                for inputs_from_model, inputs_from_data in zip(sampled_batches, train_loader):
+
                     inputs_from_data = inputs_from_data.to(model.device)
 
-                    discrim_outputs = model.discriminator_forward(
-                        inputs_from_model
-                    )
-                    discrim_targets = torch.zeros(len(discrim_outputs),
-                                                  1, device=model.device)
-                    discrim_loss = criterion['discriminator'](
-                        discrim_outputs, discrim_targets
-                    ) / 2
+                    discrim_outputs = model.discriminator_forward(inputs_from_model)
+                    discrim_targets = torch.zeros(len(discrim_outputs),1, device=model.device) 
+                    discrim_loss = criterion['discriminator'](discrim_outputs, discrim_targets ) / 2                   
 
-                    discrim_outputs = model.discriminator_forward(
-                        inputs_from_data
-                    )
-                    discrim_targets = torch.ones(
-                        len(discrim_outputs), 1, device=model.device
-                    )
-                    discrim_loss += criterion['discriminator'](
-                        discrim_outputs, discrim_targets
-                    ) / 2
+                    discrim_outputs = model.discriminator_forward(inputs_from_data)
+                    discrim_targets = torch.ones(len(discrim_outputs), 1, device=model.device)
+                    discrim_loss += criterion['discriminator'](discrim_outputs, discrim_targets) / 2
                     optimizer['discriminator'].zero_grad()
                     discrim_loss.backward()
                     optimizer['discriminator'].step()
 
-                    discrim_postfix['discrim-r_loss'] += (
-                                                                 discrim_loss.item() -
-                                                                 discrim_postfix['discrim-r_loss']
-                                                         ) * smooth
-
+                    discrim_postfix['discrim-r_loss'] += (discrim_loss.item() - discrim_postfix['discrim-r_loss']) * smooth                                                               
             discrim_tqdm.set_postfix(discrim_postfix)
 
         postfix = {**gen_postfix, **discrim_postfix}
         postfix['mode'] = 'Policy Gradient (iter #{})'.format(iter_)
         return postfix
+```
 
 We have trained our GAN completely. Here the role of reinforcement learning boosts the accuracy and predictibility of our model. Policy Gradient Function guides the generator to generate molecules with certain properties that are defined in the reward metrics.
