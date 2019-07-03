@@ -274,3 +274,4 @@ We generate samples from the generator in batches. We iterate over all the batch
 ```
 
 We have trained our GAN completely. Here the role of reinforcement learning boosts the accuracy and predictibility of our model. Policy Gradient Function guides the generator to generate molecules with certain properties that are defined in the reward metrics.
+
