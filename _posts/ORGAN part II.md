@@ -165,7 +165,7 @@ Now as we are done with pretraining both generator and the discriminator we begi
 Using these the refrence smiles and reference molecules we initate our policy gradient method. Here the criterion for calculating loss of the generator is via policy gradient function and for discriminator Binary Cross Entropy with Logits loss(nn.BCEWithLogitsLoss()) which is sigmoid and BCEloss combined together. Both generator and discriminator use Adam optimizer to optimize its parameters.
 
 Now we again train the generator, but this time in a different manner. While pretraining generator we calculated the loss based on the difference between predicted token and the actual token that was supposed to be predicted. But here we first get the rewards from the reward metrics. How do we do that?
-Pretty simlple, create an empty tensor (prev) insert the index of "/<bos>" token and feed it to the generator. The token initialises the prediction of the sequence. We calculate the reward, using the reward metrics, for each predicted token. The generated sequence and rewards are forwarded to the policy gradient function to calculate the loss.
+Pretty simlple, create an empty tensor (prev) insert the index of "\<bos>" token and feed it to the generator. The token initialises the prediction of the sequence. We calculate the reward, using the reward metrics, for each predicted token. The generated sequence and rewards are forwarded to the policy gradient function to calculate the loss.
    
 Policy Gradient Function to calculate Loss.
 ```python 
@@ -230,5 +230,7 @@ Now, we have the loss for the generated molecule we optimize the generator, back
                                               ) * smooth
             gen_tqdm.set_postfix(gen_postfix)
 ```
+We have successfully updated and trained the generator, now its time to train the discriminator.
+We generate samples from the generator in batches. We iterate over all the batches an through each molecule to predict the probability of it being fake. Again determine the loss and update the gradients. This is carried out for few epochs (10 in this case).
 
-
+We have trained our GAN completely. Here the role of reinforcement learning boosts the accuracy and predictibility of our model. Policy Gradient Function guides the generator to generate molecules with certain properties that are defined in the reward metrics.
