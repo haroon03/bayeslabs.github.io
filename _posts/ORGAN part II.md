@@ -9,10 +9,10 @@ ChEMBL SMILES data-set has been used for the training purpose of the GAN.
 
 We load the Data-set and convert it into a string, Create a vocabulary of all the characters present in the data-set. The characters "\<bos>","\<eos>", "\<unk>" and "\<pad>" <b>(markers)</b> were added to the vocabulary.
     <li>
-    "\<bos>": marks the beginning of sequence
-    "\<eos>": marks end of sequences
-    "\<unk>": specifies an unknown character
-    "\<pad>": specifies padding
+     <li>"\<bos>": marks the beginning of sequence</li>
+     <li>"\<eos>": marks end of sequences</li>
+     <li>"\<unk>": specifies an unknown character</li>
+     <li>"\<pad>": specifies padding
     </li>
 Also the characters in vocabulary are indexed (c2i & i2c).We convert the smiles into tensors using the index.
 Every time a smiles string is converted int tensor we add all the four markers at their specific locations. "bos" at the beginning of sequence, "eos" at the end of sequence, "unk" for characters unknown i.e. not in vocabulary. Padding is done to maintain a specific sequence length, 100 here.
