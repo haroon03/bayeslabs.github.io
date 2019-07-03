@@ -36,7 +36,7 @@ The training has two phases.
   Similar to the Discriminator training step we have discriminator in freeze mode while training the generator.
   Calculate the loss and optimize the network parameters and update the gradients.
 </ol>
-{% include image.html url="/assets/img/Train.png" description="Training a GAN Network" %}
+![pipeline](Train.png)
 
 This was a brief introduction to GANS's. Now, moving on to ORGAN, let's see what makes an ORGAN different from a GAN.
 In ORGAN the main difference is the application of <b>Reinforcement Learning(RL) </b> to train the generator in a manner that it generates output with desired properties.
