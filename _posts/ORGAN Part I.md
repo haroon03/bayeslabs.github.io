@@ -48,4 +48,4 @@ We treat the Generator as an agent here in an RL environment. We have <i><b>s</b
 The agent's stochastic policy is given by G(y<sub>t</sub>|Y<sub>1:t-1</sub>) and our aim is to maximize the expected long-term reward <i><b>J<sub>θ</sub></b></i>.
 J(θ) =E[R<sub>T</sub>s<sub>θ</sub>,θ]=∑<sub>x∈X</sub>Gθ(x<sub>1</sub>s<sub>θ</sub>)·Q(s<sub>θ</sub>,x<sub>1</sub>)
 
-The reward for generated molecules is calculated by a reward metrix for specific properties. Some examples include LogP, Synthetic Acessibility, Natural Product-Likeness, Chemical Beauty(Quantitative Estimation of Drug-Likeness), Tanimoto Similarity.'
+The reward for generated molecules is calculated by a reward metrix for specific properties. Some examples include LogP, Synthetic Acessibility, Natural Product-Likeness, Chemical Beauty(Quantitative Estimation of Drug-Likeness), Tanimoto Similarity, Nearest Neighbour Similarity.
