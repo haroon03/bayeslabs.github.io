@@ -111,20 +111,6 @@ def _pretrain_generator_epoch(model, tqdm_data, criterion, optimizer):
                        if optimizer is None
                        else 'Pretrain: train generator')
     return postfix
-
-
-def _pretrain_generator(model, train_loader):
-    generator = model.generator
-    criterion = nn.CrossEntropyLoss(ignore_index=c2i['<pad>'])
-    optimizer = torch.optim.Adam(model.generator.parameters(), lr=1e-4)
-    model.zero_grad()
-    for epoch in range(generator_pretrain_epochs):
-        tqdm_data = tqdm(train_loader, desc='Generator training (epoch #{})'.format(epoch))
-        postfix = _pretrain_generator_epoch(model, tqdm_data, criterion, optimizer)
-        if epoch % save_frequency == 0:
-            generator = generator.to('cpu')
-            torch.save(generator.state_dict(), 'model.csv'[:-4] +'_generator_{0:03d}.csv'.format(epoch))
-        generator = generator.to(device)
 ```      
 
 Now we freeze the generator and train the discriminator. The training process of discriminator comprises of 2 parts. It is trained first on the training data with labels. Since the Data set has valid molecules all are labelled 1.
@@ -169,27 +155,6 @@ ef _pretrain_discriminator_epoch(model, tqdm_data,
                        if optimizer is None
                        else 'Pretrain: train discriminator')
     return postfix
-
-
-def _pretrain_discriminator(model, train_loader):
-    discriminator = model.discriminator
-    criterion = nn.BCEWithLogitsLoss()
-    optimizer = torch.optim.Adam(model.discriminator.parameters(),
-                                 lr=1e-4)
-
-    model.zero_grad()
-    for epoch in range(discriminator_pretrain_epochs):
-        tqdm_data = tqdm(
-            train_loader,
-            desc='Discriminator training (epoch #{})'.format(epoch)
-        )
-        postfix = _pretrain_discriminator_epoch(
-            model, tqdm_data, criterion, optimizer
-        )
-        if epoch % save_frequency == 0:
-            discriminator = discriminator.to('cpu')
-            torch.save(discriminator.state_dict(), 'model.csv'[:-4] + '_discriminator_{0:03d}.csv'.format(epoch))
-            discriminator = discriminator.to(device)
 ```
 
 
