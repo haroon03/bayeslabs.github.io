@@ -50,3 +50,10 @@ The agent's stochastic policy is given by G(y<sub>t</sub>|Y<sub>1:t-1</sub>) and
 J(θ) =E[R<sub>T</sub>s<sub>θ</sub>,θ]=∑<sub>x∈X</sub>Gθ(x<sub>1</sub>s<sub>θ</sub>)·Q(s<sub>θ</sub>,x<sub>1</sub>)
 
 The reward for generated molecules is calculated by a reward metrix for specific properties. Some examples include LogP, Synthetic Acessibility, Natural Product-Likeness, Chemical Beauty(Quantitative Estimation of Drug-Likeness), Tanimoto Similarity, Nearest Neighbour Similarity.
+
+
+
+<b>Reinforcement Metric:</b> 
+Molecular metrics are implemented using the RDKit chem-informatics package. Metrics include Synthesis Accessibility, Natural Product likeliness, Drug-likeness, LogP, Nearest Neighbour Similarity. These were applied to calculate the reward for each generated molecule. Reinforcement provides a quality metric (between 0 & 1) which gives the desirability of a specific molecule, where 1 being highly desirable and 0 being highly undesirable.
+
+The main objective of the reinforcement metric is to maximize the reward by optimizing the generator to generate molecules similar to the initial distribution of data. The molecules generated are then analyzed by the discriminator and the reward metric, which then optimize or train the generator to fool the discriminator.
