@@ -7,18 +7,13 @@ ChEMBL SMILES data-set has been used for the training purpose of the GAN.
 
 {% include image.html url="/assets/img/SMILES.png" description="SMILES" %}
 
-We load the Data-set and convert it into a string, Create a vocabulary of all the characters present in the data-set. The characters "/<bos>","<eos>", "<unk>" and "<pad>" <b>(markers)</b> were added to the vocabulary.
+We load the Data-set and convert it into a string, Create a vocabulary of all the characters present in the data-set. The characters "\<bos>","\<eos>", "\<unk>" and "\<pad>" <b>(markers)</b> were added to the vocabulary.
     "\<bos>": marks the beginning of sequence
-    "<eos>": marks end of sequences
-    "<unk>": specifies an unknown character
-    "<pad>": specifies padding
+    "\<eos>": marks end of sequences
+    "\<unk>": specifies an unknown character
+    "\<pad>": specifies padding
 Also the characters in vocabulary are indexed (c2i & i2c).We convert the smiles int tensors using the index.
 Every time a smiles string is converted int tensor we add all the four markers at their specific locations. "bos" at the beginning of sequence, "eos" at the end of sequence, "unk" for characters unknown i.e. not in vocabulary. Padding is done to maintain a specific sequence length, 100 here.
-
-
-```python
-
-```
 
 <b>Generator(G):</b> It is a Recurrent Neural Network(RNN) with Long-short Term Memory (LSTM) cells. It is responsible for generating molecules that closely follows the distribution of training data. A generator can be assumed as a money forger. The Generator is initially trained on the training set using Maximum Likelihood Estimation(MLE) to generate molecules.
 It takes the initial vector and predicts the next one untill
