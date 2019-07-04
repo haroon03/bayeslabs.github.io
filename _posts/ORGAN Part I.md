@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: Post
 title:  "ORGAN"
 date: 2019-07-04
 comments: True
