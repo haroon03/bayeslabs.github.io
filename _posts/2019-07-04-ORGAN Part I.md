@@ -23,7 +23,7 @@ Given an initial  training distribution p<sub>data</sub>, the generator G sample
 The model follows a min-max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples very close to the original distribution, while maximizing the discriminator function log(D(x)) so that it can classify between fake and real data pints more accurately. 
 <ul>
   <li>For a single data point we have: </li>
-        min<sub>G</sub> max<sub>D</sub> [logD(x)]+z∼p<sub>synthetic<sup>z</sup></sub>[log(1−D(G(z)))].
+        $min<sub>G</sub> max<sub>D</sub> [logD(x)]+z∼p<sub>synthetic<sup>z</sup></sub>[log(1−D(G(z)))]$.
   <li>For the complete distributions we have: </li>
         min<sub>G</sub> max<sub>D</sub> E<sub>p<sub>data</sub></sub>[logD(x)] +E<sub>p<sub>synth</sub></sub>[log(1−D(G(z)))] where E is Expectation.
 </ul>
