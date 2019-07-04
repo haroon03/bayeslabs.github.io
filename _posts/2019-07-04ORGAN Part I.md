@@ -1,6 +1,6 @@
 ---
-layout: Post
-title:  "ORGAN"
+layout: post
+title:  "ORGAN part I"
 date: 2019-07-04
 comments: True
 mathjax: True
