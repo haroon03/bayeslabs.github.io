@@ -1,4 +1,10 @@
-
+---
+layout: post
+title:  "ORGAN"
+date: 2019-07-04
+comments: True
+mathjax: True
+---
 <h2>Introduction</h2>
 <b>Objective-Reinforced Generative Adversarial Network (ORGAN)</b> is a modified version of a basic Generative Adversarial Network (GAN). 
 Before we dig deep into theory and implementation of ORGAN let me brief you about the basics of GAN. 
