@@ -14,7 +14,7 @@ In this post I will give you a walkthroug of the code.
 ChEMBL SMILES data-set has been used for the training purpose of the GAN. 
 <b>Simplified Molecular-Input Line-Entry System (SMILES)</b>. SMILES is a line notation for representing molecules and reactions.
 
-{ % include image.html align ="center" url = "\assets\img\SMILES.png" description="SMILES Representation"}
+{ % include image.html align ="center" url = "\assets\img\SMILES.png" description="SMILES Representation" %}
 
 We load the Data-set and convert it into a string, Create a vocabulary of all the characters present in the data-set. The characters "\<bos>","\<eos>", "\<unk>" and "\<pad>" <b>(markers)</b> were added to the vocabulary.
      <li>"\<bos>": marks the beginning of sequence</li>
