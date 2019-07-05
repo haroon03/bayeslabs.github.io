@@ -23,9 +23,9 @@ Given an initial  training distribution p<sub>data</sub>, the generator G sample
 The model follows a min-max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples very close to the original distribution, while maximizing the discriminator function log(D(x)) so that it can classify between fake and real data pints more accurately. 
 <ul>
   <li>For a single data point we have: </li>
-        $min_{G} max_{D}[logD(x)]+z∼p_{synthetic}_{z}[log(1−D(G(z)))]$.
+        $min_G max_D [logD(x)]+z∼p_{synthetic}_z [log(1−D(G(z)))]$.
   <li>For the complete distributions we have: </li>
-       $min_{G} max_{D} E_{p}_{data}[logD(x)] +E_{p}_{synth}[log(1−D(G(z)))]$ where E is Expectation.
+       $min_G max_D E_p_{data} [logD(x)] +E_p_{synth} [log(1−D(G(z)))]$ where E is Expectation.
 </ul>
 <h3>Training a GAN</h3>
 Training a GAN is still a topic of research. Various problems have limited the power of GAN and its stability. Stability of GAN while training is also a major roadblock. If you start to train a GAN, and the discriminator part is much powerful than its generator counterpart, the generator would fail to train effectively. This will, in turn, affect the training of your GAN. On the other hand, if the discriminator is too lenient; it would let literally any image be generated. And this will mean that your GAN is useless. 
