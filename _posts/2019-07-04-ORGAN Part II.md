@@ -62,7 +62,7 @@ You must be thinking why do padding and packing? Why not just simply pass the pa
 
 Well packing saves us a lot of computations. It does not perform computations on the padded sequences scince all the paddings are not included in the packed list of tensors thus resukts in saving a lot of time and energy. Just to give you an idea I will explain a small example:
 
-```
+```python
 Let's assume we have 6 sequences (of variable lengths) in total. You can also consider this number 6 as the batch_size hyperparameter. We have to pass these sequences through an RNN architecture(Assume LSTM), to do so we pad the sequence (with 0's) upto max length of a sequence.
  So the sequences are [1,2,3,4,5,6,7,8,9],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6],[1,2,3,4],[1,2,3],[1,2].
  Note: The values may be different.
