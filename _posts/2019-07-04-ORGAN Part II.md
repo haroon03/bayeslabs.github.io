@@ -74,8 +74,8 @@ Let's assume we have 6 sequences (of variable lengths) in total. You can also co
  [1,2,3,4,0,0,0,0,0],
  [1,2,3,0,0,0,0,0,0],
  [1,2,0,0,0,0,0,0,0].
- Lets say that we will matrix multiply the above padded_batch_of_sequences of shape (6, 9) with a weight matrix W of shape   (9, 3). We perfom <b>6x9=54</b> multiplication and <b>6x8=48</b> addition operations. Where most will be 0's.
- So during packed condition we only perform <b>32</b> multilications and <b>26</b> additions. Now considering this for thousands of sequences it will save us a lot of time and energy.
+ Lets say that we will matrix multiply the above padded_batch_of_sequences of shape (6, 9) with a weight matrix W of shape   (9, 3). We perfom 6x9=54 multiplication and 6x8=48 addition operations. Where most will be 0's.
+ So during packed condition we only perform 32 multilications and 26 additions. Now considering this for thousands of sequences it will save us a lot of time and energy.
 
 ```
 
