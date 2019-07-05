@@ -25,7 +25,7 @@ The model follows a min-max game where we minimize the Generator function log(1�
   <li>For a single data point we have: </li>
         $min_G  max_D  [\log D(x)] + z∼ p_{synthetic z} [ \log (1−D(G(z)))]$.
   <li>For the complete distributions we have: </li>
-       $min_G max_D \mathrm(E)_{x~pdata} [ \log D(x) ] + \mathrm(E)_{z~psynth} [ \log (1−D(G(z)))]$.
+       $min_G max_D \mathrm{E}_{x ~ pdata} [ \log D(x) ] + \mathrm{E}_{z ~ psynth} [ \log (1−D(G(z)))]$.
  where E is Expectation.
 </ul>
 <h3>Training a GAN</h3>
@@ -52,10 +52,10 @@ In ORGAN we bypass the generator differentiation problem by treating the specifi
 
 <h3>Reinforcement Learning</h3>
 
-We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i> available in state <i><b>s</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next character x<sub>t+1</sub>. State s<sub>t</sub> is an already generated partial sequence of characters X<sub>1:t</sub>. <i><b>Q(s,a)</b></i> is the action-value function that represents the expected reward at state <i><b>s</b></i> of taking action <i><b>a</b></i> and following our current policy to complete the rest of the sequence. When we are in state <i><b>s</b></i> we estimate <i><b>Q</b></i> value for every possible action, then we choose the action with the highest <i><b>Q</b></i> value. Let <i><b>R(X<sub>1: T</sub>)</b></i> be the reward function defined for full length sequences. Now, if we have an incomplete sequence X<sub>1:t</sub>, in state <i><b>s</b></i> then , the generator G<sub>θ</sub> (read G parametrized by θ) must produce an action <i><b>a</b></i> with the next token x<sub>t+1</sub>.
-The agent's stochastic policy is given by G(y<sub>t</sub>|Y<sub>1:t-1</sub>) and our aim is to maximize the expected long-term reward <i><b>J<sub>θ</sub></b></i>. 
+We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i> available in state <i><b>s</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next character $x_{t+1}$. State s<sub>t</sub> is an already generated partial sequence of characters $X_{1:t}$. <i><b>Q(s,a)</b></i> is the action-value function that represents the expected reward at state <i><b>s</b></i> of taking action <i><b>a</b></i> and following our current policy to complete the rest of the sequence. When we are in state <i><b>s</b></i> we estimate <i><b>Q</b></i> value for every possible action, then we choose the action with the highest <i><b>Q</b></i> value. Let <i><b>R(X<sub>1: T</sub>)</b></i> be the reward function defined for full length sequences. Now, if we have an incomplete sequence $X_{1:t}$, in state <i><b>s</b></i> then , the generator $G_{\theta}$ (read G parametrized by $\theta$) must produce an action <i><b>a</b></i> with the next token $x_{t+1}$.
+The agent's stochastic policy is given by $G(y_t | Y_{1:t-1})$ and our aim is to maximize the expected long-term reward $J_{\theta}$. 
 
-$J(\theta) = \mathrm(E) [ R_T s_\theta , \theta ] = \sum_{x \in X} G \theta (x_1 s_\theta )* Q (s_\theta , x_1 )$.
+$J(\theta) = \mathrm{E} [ R_T | s_\theta , \theta ] = \sum_{x1 \in X} G \theta (x_1 | s_\theta )* Q (s_\theta , x_1 )$.
 
 The reward for generated molecules is calculated by a reward metrix for specific properties. Some examples include LogP, Synthetic Acessibility, Natural Product-Likeness, Chemical Beauty(Quantitative Estimation of Drug-Likeness), Tanimoto Similarity, Nearest Neighbour Similarity.
 
@@ -78,8 +78,8 @@ We start with a random arbitrary policy and go through some actions and if the r
 
 <b>Policy Function</b>
 The policy function calculates the LogSoftmax of the output sequence given rewards, the targets, and the length of sequence. Its output is negative since we want to minimize loss but maximize the policy gradients.
-The Policy gradient loss function looks like: L = -Q(s, a)log(G(y<sub>t</sub>|Y<sub>1:t-1</sub>)).
-Where Q(s, a) expected reward for an action <i><b>a</b></i> in state <i><b>s</b></i> and  G(y<sub>t</sub>|Y<sub>1:t-1</sub>) is the policy.
+The Policy gradient loss function looks like: $ L = -Q(s, a) \log (G(y_t | Y_{1:t-1}))$.
+Where $ Q(s, a)$ expected reward for an action <i><b>a</b></i> in state <i><b>s</b></i> and  $ G(y_t | Y_{1:t-1})$ is the policy.
 
 To get a more detailed explaination of policy gradient refer to this 
 In  we will implement the above discussed theories to generate a desired molecule
