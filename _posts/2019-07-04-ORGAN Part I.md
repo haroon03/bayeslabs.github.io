@@ -25,7 +25,7 @@ The model follows a min-max game where we minimize the Generator function log(1�
   <li>For a single data point we have: </li>
         $min_G max_D[logD(x)]+z∼p_synthetic_z[log(1−D(G(z)))]$.
   <li>For the complete distributions we have: </li>
-       $ min_G max_D E_p_data[logD(x)] +E_p_synth[log(1−D(G(z)))]$ where E is Expectation.
+       $min_G max_D E_p_data[logD(x)] +E_p_synth[log(1−D(G(z)))]$ where E is Expectation.
 </ul>
 <h3>Training a GAN</h3>
 Training a GAN is still a topic of research. Various problems have limited the power of GAN and its stability. Stability of GAN while training is also a major roadblock. If you start to train a GAN, and the discriminator part is much powerful than its generator counterpart, the generator would fail to train effectively. This will, in turn, affect the training of your GAN. On the other hand, if the discriminator is too lenient; it would let literally any image be generated. And this will mean that your GAN is useless. 
