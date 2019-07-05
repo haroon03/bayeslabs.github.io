@@ -323,13 +323,13 @@ For breif expalinations of the reward metrics used in this model here are some l
 <a href = "https://en.wikipedia.org/wiki/Partition_coefficient">Partition Coefficient</a> 
 
 
-Tanimoto Similarity -https://jcheminf.biomedcentral.com/articles/10.1186/s13321-015-0069-3
+<a href = "https://jcheminf.biomedcentral.com/articles/10.1186/s13321-015-0069-3">Tanimoto Similarity </a>
 
 
-Sythectic Accessibility Score -https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3225829/
+<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3225829/">Sythectic Accessibility Score</a>
 
 
-Natural Product Likeness Score - https://peter-ertl.com/reprints/Ertl-JCIM-48-68-2008.pdf
+<a href = "https://peter-ertl.com/reprints/Ertl-JCIM-48-68-2008.pdf">Natural Product Likeness Score</a>
 
 
 
