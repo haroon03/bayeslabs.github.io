@@ -85,5 +85,5 @@ $ L = -Q(s, a) \log (G(y_t | Y_{1:t-1}))$.
 
 Where $ Q(s, a)$ expected reward for an action <i><b>a</b></i> in state <i><b>s</b></i> and  $ G(y_t | Y_{1:t-1})$ is the policy.
 
-To get a more detailed explaination of policy gradient refer to this 
-In  we will implement the above discussed theories to generate a desired molecule
+To get a more detailed explaination of policy gradient refer to this <a href="https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c">blog</a>
+In next <a href = "https://haroon03.github.io/2019/07/04/ORGAN-Part-II.html">blog</a> we will implement the above discussed theories to generate a desired molecule
