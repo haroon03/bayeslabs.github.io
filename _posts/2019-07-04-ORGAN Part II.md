@@ -11,7 +11,7 @@ In this post I will give you a walkthrough of the code.
 
 <h4><b>Dataset:</b></h4>
 
-ChEMBL SMILES data-set has been used for the training purpose of the GAN. 
+SMILES data set has been used for the training purpose of the GAN. 
 <b>Simplified Molecular-Input Line-Entry System (SMILES)</b>. SMILES is a line notation for representing molecules and reactions.
 
 
@@ -125,7 +125,7 @@ class Discriminator(nn.Module):
 
 <h3>Training</h3> 
 As discussed in previous post training has 2 phases.
-Here we begin training the generator initially with training data.For each epoch the sequence is split into previous and next.  previous is sequence[:-1] and next is sequence[1:]. The generator presicts the next character and each time loss is calculated and the gerrator is optimsed and parameters updated.
+Here we begin training the generator initially with training data.For each epoch the sequence is split into previous and next.  previous is sequence[:-1] and next is sequence[1:]. The generator predicts the next character and each time, loss is calculated and the generator is optimsed and parameters updated.
 While training the Generator the discriminator is kept in eval mode(freezed).
 
 
@@ -311,4 +311,11 @@ We generate samples from the generator in batches. We iterate over all the batch
 ```
 
 We have trained our GAN completely. Here the role of reinforcement learning boosts the accuracy and predictibility of our model. Policy Gradient Function guides the generator to generate molecules with certain properties that are defined in the reward metrics.
+For breif expalinations of the reward metrics used in this model here are some links.
+Quantitative Estimation of Drug-Likeness - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3524573/
+Frēchet ChemNet Distance - https://arxiv.org/abs/1803.09518
+Partition Coefficient - https://en.wikipedia.org/wiki/Partition_coefficient
+Tanimoto Similarity -https://jcheminf.biomedcentral.com/articles/10.1186/s13321-015-0069-3
+Sythectic Accessibility Score -https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3225829/
+Natural Product Likeness Score - https://peter-ertl.com/reprints/Ertl-JCIM-48-68-2008.pdf
 
