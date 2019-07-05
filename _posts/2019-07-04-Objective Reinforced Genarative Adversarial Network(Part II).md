@@ -5,7 +5,7 @@ date: 2019-07-04
 comments: True
 mathjax: True
 ---
-In this post I will give you a walkthrough of the code. 
+This blog is in continuation with the <a href = "https://haroon03.github.io/2019/07/03/Objective-Reinforced-Generative-Adversarial-Network-(Part-I).html">ORGAN Part I</a>, where I have thoroughly discussed about Generative Adversarial Network(GAN) and ORGAN. So, here I will walk you through the code of ORGAN to give you an overview.
 
 <h3>ORGAN: MODEL</h3>
 
