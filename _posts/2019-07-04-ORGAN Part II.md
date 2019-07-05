@@ -314,13 +314,13 @@ We have trained our GAN completely. Here the role of reinforcement learning boos
 For breif expalinations of the reward metrics used in this model here are some links.
 
 
-Quantitative Estimation of Drug-Likeness - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3524573/
+<a href = "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3524573/"> Quantitative Estimation of Drug-Likeness</a> 
 
 
-Frēchet ChemNet Distance - https://arxiv.org/abs/1803.09518
+<a href = "https://arxiv.org/abs/1803.09518">Frēchet ChemNet Distance</a>
 
 
-Partition Coefficient - https://en.wikipedia.org/wiki/Partition_coefficient
+<a href = "https://en.wikipedia.org/wiki/Partition_coefficient">Partition Coefficient</a> 
 
 
 Tanimoto Similarity -https://jcheminf.biomedcentral.com/articles/10.1186/s13321-015-0069-3
