@@ -61,7 +61,9 @@ What we are doing here is, we initially use the embedding layer to understand th
 You must be thinking why do padding and packing? Why not just simply pass the padded tensors to the RNN.
 
 Well packing saves us a lot of computations. It does not perform computations on the padded sequences scince all the paddings are not included in the packed list of tensors thus resukts in saving a lot of time and energy. Just to give you an idea I will explain a small example:
-```Let's assume we have 6 sequences (of variable lengths) in total. You can also consider this number 6 as the batch_size hyperparameter. We have to pass these sequences through an RNN architecture(Assume LSTM), to do so we pad the sequence (with 0's) upto max length of a sequence.
+
+```
+Let's assume we have 6 sequences (of variable lengths) in total. You can also consider this number 6 as the batch_size hyperparameter. We have to pass these sequences through an RNN architecture(Assume LSTM), to do so we pad the sequence (with 0's) upto max length of a sequence.
  So the sequences are [1,2,3,4,5,6,7,8,9],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6],[1,2,3,4],[1,2,3],[1,2].
  Note: The values may be different.
  
@@ -74,7 +76,9 @@ Well packing saves us a lot of computations. It does not perform computations on
  [1,2,0,0,0,0,0,0,0].
  Lets say that we will matrix multiply the above padded_batch_of_sequences of shape (6, 9) with a weight matrix W of shape   (9, 3). We perfom <b>6x9=54</b> multiplication and <b>6x8=48</b> addition operations. Where most will be 0's.
  So during packed condition we only perform <b>32</b> multilications and <b>26</b> additions. Now considering this for thousands of sequences it will save us a lot of time and energy.
+
 ```
+
 Pass this through the LSTM layer where it will understand the relation between the elemants and lern overtime the sequence patterns. Afterward , we have to convert the output from the LSTM into  padded batch output form (initial form).
 That is done by ```pad_packed_sequence```.
 
