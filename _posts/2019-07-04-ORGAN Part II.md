@@ -312,10 +312,24 @@ We generate samples from the generator in batches. We iterate over all the batch
 
 We have trained our GAN completely. Here the role of reinforcement learning boosts the accuracy and predictibility of our model. Policy Gradient Function guides the generator to generate molecules with certain properties that are defined in the reward metrics.
 For breif expalinations of the reward metrics used in this model here are some links.
+
+
 Quantitative Estimation of Drug-Likeness - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3524573/
+
+
 Frēchet ChemNet Distance - https://arxiv.org/abs/1803.09518
+
+
 Partition Coefficient - https://en.wikipedia.org/wiki/Partition_coefficient
+
+
 Tanimoto Similarity -https://jcheminf.biomedcentral.com/articles/10.1186/s13321-015-0069-3
+
+
 Sythectic Accessibility Score -https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3225829/
+
+
 Natural Product Likeness Score - https://peter-ertl.com/reprints/Ertl-JCIM-48-68-2008.pdf
+
+
 
