@@ -23,9 +23,9 @@ Given an initial  training distribution p<sub>data</sub>, the generator G sample
 The model follows a min-max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples very close to the original distribution, while maximizing the discriminator function log(D(x)) so that it can classify between fake and real data pints more accurately. 
 <ul>
   <li>For a single data point we have: </li>
-        $min_G max_D[logD(x)]+z∼p_synthetic_z[log(1−D(G(z)))]$.
+        $min_G max_D[logD(x)]+z∼p_{synthetic}_z[log(1−D(G(z)))]$.
   <li>For the complete distributions we have: </li>
-       $min_G max_D E_p_data[logD(x)] +E_p_synth[log(1−D(G(z)))]$ where E is Expectation.
+       $min_G max_D E_p_{data}[logD(x)] +E_p_{synth}[log(1−D(G(z)))]$ where E is Expectation.
 </ul>
 <h3>Training a GAN</h3>
 Training a GAN is still a topic of research. Various problems have limited the power of GAN and its stability. Stability of GAN while training is also a major roadblock. If you start to train a GAN, and the discriminator part is much powerful than its generator counterpart, the generator would fail to train effectively. This will, in turn, affect the training of your GAN. On the other hand, if the discriminator is too lenient; it would let literally any image be generated. And this will mean that your GAN is useless. 
@@ -53,7 +53,7 @@ In ORGAN we bypass the generator differentiation problem by treating the specifi
 
 We treat the Generator as an agent here in an RL environment. We have <i><b>s</b></i> as the states with a reward function <i><b>Q</b></i>, <i><b>a</b></i> is the action that the agent chooses from action space <i><b>A</b></i> available in state <i><b>s</b></i>. The action space <i><b>A</b></i> composes of all the possible characters to select for the next character x<sub>t+1</sub>. State s<sub>t</sub> is an already generated partial sequence of characters X<sub>1:t</sub>. <i><b>Q(s,a)</b></i> is the action-value function that represents the expected reward at state <i><b>s</b></i> of taking action <i><b>a</b></i> and following our current policy to complete the rest of the sequence. When we are in state <i><b>s</b></i> we estimate <i><b>Q</b></i> value for every possible action, then we choose the action with the highest <i><b>Q</b></i> value. Let <i><b>R(X<sub>1: T</sub>)</b></i> be the reward function defined for full length sequences. Now, if we have an incomplete sequence X<sub>1:t</sub>, in state <i><b>s</b></i> then , the generator G<sub>θ</sub> (read G parametrized by θ) must produce an action <i><b>a</b></i> with the next token x<sub>t+1</sub>.
 The agent's stochastic policy is given by G(y<sub>t</sub>|Y<sub>1:t-1</sub>) and our aim is to maximize the expected long-term reward <i><b>J<sub>θ</sub></b></i>.
-J(θ) =E[R_T s_θ ,θ]=∑_x∈X Gθ(x_1 s_θ )·Q(s_θ , x_1 )
+J(θ) =E[R_(T} s_{θ} ,θ]=∑_{x∈X} Gθ(x_1 s_θ )·Q(s_θ , x_1 )
 
 The reward for generated molecules is calculated by a reward metrix for specific properties. Some examples include LogP, Synthetic Acessibility, Natural Product-Likeness, Chemical Beauty(Quantitative Estimation of Drug-Likeness), Tanimoto Similarity, Nearest Neighbour Similarity.
 
