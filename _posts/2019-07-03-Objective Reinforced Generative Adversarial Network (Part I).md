@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Objective Reinforced Generative Adversarial Network (Part I)"
-date: 2019-07-05
+date: 2019-07-03
 comments: True
 mathjax: True
 ---
