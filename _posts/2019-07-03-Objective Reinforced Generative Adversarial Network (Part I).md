@@ -8,7 +8,7 @@ mathjax: True
 <h2>Introduction</h2>
 <b>Objective-Reinforced Generative Adversarial Network (ORGAN)</b> is a modified version of a basic Generative Adversarial Network (GAN). 
 Before we dig deep into theory and implementation of ORGAN let me brief you about the basics of GAN. 
-A simple GAN is composed of two neural networks,Generator, and the Discriminator.
+A simple GAN is composed of two neural networks, Generator, and the Discriminator.
 
 <li><b> Generator(G):</b></li> The main aim of the Generator is to generate fake samples which resemble the true data/distribution so closely, that the discriminator cannot differentiate between the true data and the fake ones, in other words, it tries to fool the discriminator. 
 
@@ -48,7 +48,7 @@ The training has two phases.
 
 This was a brief introduction to GANS's. Now, moving on to ORGAN, let's see what makes an ORGAN different from a GAN.
 In ORGAN the main difference is the application of <b>Reinforcement Learning(RL) </b> to train the generator in a manner that it generates output with desired properties.
-In ORGAN we bypass the generator differentiation problem by treating the specific discrete sequences as stochastic policy in an RL generator gradients setup. In other words we update the generator pamameters with policy gradient.
+In ORGAN we bypass the generator differentiation problem by treating the specific discrete sequences as stochastic policy in an RL generator gradients setup. In other words, we update the generator parameters with policy gradient.
 
 <h3>Reinforcement Learning</h3>
 
@@ -57,24 +57,24 @@ The agent's stochastic policy is given by $G(y_t | Y_{1:t-1})$ and our aim is to
 
 $J(\theta)=\mathrm{E} [R_T \| s_{\theta}, \theta]=\sum_{x_1 \in X} G_{\theta}(x_1 \| s_{\theta}).Q(s_{\theta},x_1 )$.
 
-The reward for generated molecules is calculated by a reward metrix for specific properties. Some examples include LogP, Synthetic Acessibility, Natural Product-Likeness, Chemical Beauty(Quantitative Estimation of Drug-Likeness), Tanimoto Similarity, Nearest Neighbour Similarity.
+The reward for generated molecules is calculated by reward metrics for specific properties. Some examples include LogP, Synthetic Acessibility, Natural Product-Likeness, Chemical Beauty(Quantitative Estimation of Drug-Likeness), Tanimoto Similarity, Nearest Neighbour Similarity.
 
 {%include image.html align = "center" url="\assets\img\RL.png" description="Reinforcent Learning" %}
 
 <b>Reinforcement Metric:</b> 
-Molecular metrics are implemented using the RDKit chem-informatics package. Metrics include Synthesis Accessibility, Natural Product likeliness, Drug-likeness, LogP, Nearest Neighbour Similarity. These were applied to calculate the reward for each generated molecule. Reinforcement provides a quality metric (between 0 & 1) which gives the desirability of a specific molecule, where 1 being highly desirable and 0 being highly undesirable.
+Molecular metrics are implemented using the RDKit chem-informatics package. Metrics include Synthetic Accessibility, Natural Product likeliness, Drug-likeness, LogP, Nearest Neighbour Similarity. These were applied to calculate the reward for each generated molecule. Reinforcement provides a quality metric (between 0 & 1) which gives the desirability of a specific molecule, 1 being highly desirable and 0 being highly undesirable.
 
 The main objective of the reinforcement metric is to maximize the reward by optimizing the generator to generate molecules similar to the initial distribution of data. The molecules generated are then analyzed by the discriminator and the reward metric, which then optimize or train the generator to fool the discriminator.
 
 
 
-We have completed the fist half of training. The above steps are called pretraining.
+We have completed the first half of the training. The above steps are called pretraining.
 Now we train again both generator and discriminator but with a policy gradient. Since the generator has been trained let it generate molecules of its own by only providing the initial character "\<bos>".
-For each character generated, loss is calculated and model is update.
-In case of Generator, policy gradient loss is calculted. The generator is then optimized and all parameters are updated. 
+For each character generated, the loss is calculated and the model is updated.
+In case of Generator, policy gradient loss is calculated. The generator is then optimized and all parameters are updated. 
 
 <h3> Policy Gradient Method</h3>
-We start with a random arbitrary policy and go through some actions and if the rewards are better than expected, increase probability of those actions. If the rewards are worse we decrease the probability of taking tose actions.
+We start with a random arbitrary policy and go through some actions and if the rewards are better than expected, increase the  probability of those actions. If the rewards are worse we decrease the probability of taking those actions.
 
 <b>Policy Function</b>
 The policy function calculates the LogSoftmax of the output sequence given rewards, the targets, and the length of sequence. Its output is negative since we want to minimize loss but maximize the policy gradients.
@@ -85,5 +85,7 @@ $ L = -Q(s, a) \log (G(y_t | Y_{1:t-1}))$.
 
 Where $ Q(s, a)$ expected reward for an action <i><b>a</b></i> in state <i><b>s</b></i> and  $ G(y_t | Y_{1:t-1})$ is the policy.
 
-To get a more detailed explaination of policy gradient refer to this <a href="https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c">blog</a>
-In next <a href = "https://haroon03.github.io/2019/07/04/ORGAN-Part-II.html">blog</a> we will implement the above discussed theories to generate a desired molecule
+To get a more detailed explanation of policy gradient refer to this <a href="https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c">blog</a>.
+
+
+In the next <a href = "https://haroon03.github.io/2019/07/04/ORGAN-Part-II.html">blog</a> we will implement the above discussed theories to generate a desired molecule
