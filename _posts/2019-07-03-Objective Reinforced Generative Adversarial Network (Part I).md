@@ -39,8 +39,8 @@ The training has two phases.
   Afterward, we generate fake data and train the discriminator on it as well, until it predicts efficiently.
   Calculate the loss and optimize the network parameters and update the gradients.
   <li><b>Generator Training</b></li>
-  Now to train the Discriminator we use the predictions of discriminator as an objective to train the Generator.
-  Similar to the Discriminator training step we have discriminator in freeze mode while training the generator.
+  Now to train the Generator, we use the predictions of discriminator as an objective to train the Generator.
+  Similar to the previous training step we have discriminator in freeze mode while training the generator.
   Calculate the loss and optimize the network parameters and update the gradients.
 </ol>
 
