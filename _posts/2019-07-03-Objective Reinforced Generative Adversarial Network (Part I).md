@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Objective Reinforced Generative Adversarial Network (Part I)"
-date: 2019-07-03
+date: 2019-07-03  <a href = "https://www.linkedin.com/in/haroon-nazir-a74606130/">Haroon Nazir</a>
 comments: True
 mathjax: True
 ---
