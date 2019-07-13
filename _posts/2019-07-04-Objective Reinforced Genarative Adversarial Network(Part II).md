@@ -17,7 +17,7 @@ SMILES data set has been used for the training purpose of the GAN.
 
 {% include image.html align="center" url="\assets\img\SMILES.png" description="SMILES Representation"  %}
 
-We load the Data-set and convert it into a string, Create a vocabulary of all the characters present in the data-set. The characters "\<bos>","\<eos>", "\<unk>" and "\<pad>" <b>(markers)</b> were added to the vocabulary.
+We load the Data-set and convert it into a string, Create a vocabulary of all the characters present in the data-set. The characters "\<bos>" : begining of sentence,"\<eos>" end of sentence, "\<unk>" unknown and "\<pad>" : padding <b>(markers)</b> were added to the vocabulary.
 
 Also the characters in vocabulary are indexed (c2i & i2c).We convert the smiles into tensors using the index.
 Every time a smiles string is converted int tensor we add all the four markers at their specific locations. "bos" at the beginning of sequence, "eos" at the end of sequence, "unk" for characters unknown i.e. not in vocabulary. Padding is done to maintain a specific sequence length, 100 here.Now,we have the data that our computer can read and understand.
